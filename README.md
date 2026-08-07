@@ -1,5 +1,8 @@
 # Day 11 — Controlled Agent Security (2026)
 
+**Họ tên:** Đào Quốc Đại  
+**MSSV:** 2A202601285
+
 Làm sao để ứng dụng agent an toàn hơn?
 
 **Hình thức:** bài tập **cá nhân** (1 người / 1 MSSV).
