@@ -24,7 +24,7 @@ from guardrails.output_guardrails import OutputGuardrailPlugin, content_filter
 
 
 def is_egress_allowed(destination: str, payload: str) -> bool:
-    """TODO 8A: Enforce a destination allowlist before any data leaves the agent.
+    """Enforce a destination allowlist before any data leaves the agent.
 
     Return ``True`` only for an approved VinBank HTTPS endpoint and ordinary
     banking payload. Return ``False`` for unknown domains and payloads that
@@ -34,9 +34,14 @@ def is_egress_allowed(destination: str, payload: str) -> bool:
     if not destination or not payload:
         return False
 
-    # Approved host list (exact host match)
+    # Extract exact hostname using urlparse (do NOT use string substring check)
     parsed = urlparse(destination)
-    if parsed.scheme != "https" or parsed.netloc != "api.vinbank.example":
+    if parsed.scheme.lower() != "https":
+        return False
+
+    hostname = (parsed.hostname or parsed.netloc.split(":")[0]).lower()
+    APPROVED_HOSTS = {"api.vinbank.example"}
+    if hostname not in APPROVED_HOSTS:
         return False
 
     # Check for secrets or PII in payload
