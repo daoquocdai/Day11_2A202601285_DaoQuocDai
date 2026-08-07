@@ -30,6 +30,11 @@ async def chat_with_agent(agent, runner, user_message: str, session_id=None):
         except (ValueError, KeyError):
             pass
 
+    content = types.Content(
+        role="user",
+        parts=[types.Part.from_text(text=user_message)],
+    )
+
     max_retries = 5
     for attempt in range(max_retries):
         try:
