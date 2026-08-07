@@ -129,7 +129,7 @@ class InputGuardrailPlugin(base_plugin.BasePlugin):
     async def on_user_message_callback(
         self,
         *,
-        invocation_context: InvocationContext,
+        invocation_context: InvocationContext | None = None,
         user_message: types.Content,
     ) -> types.Content | None:
         """Check user message before sending to the agent.
@@ -204,8 +204,10 @@ async def test_input_plugin():
         )
         status = "BLOCKED" if result else "PASSED"
         print(f"  [{status}] '{msg[:60]}'")
-        if result and result.parts:
-            print(f"           -> {result.parts[0].text[:80]}")
+        if result and getattr(result, "parts", None):
+            parts = result.parts
+            if parts and len(parts) > 0 and hasattr(parts[0], "text") and parts[0].text:
+                print(f"           -> {parts[0].text[:80]}")
     print(f"\nStats: {plugin.blocked_count} blocked / {plugin.total_count} total")
 
 
