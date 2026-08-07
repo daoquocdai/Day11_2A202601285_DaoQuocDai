@@ -1,13 +1,13 @@
 {
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
-  "python.pythonPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.defaultInterpreterPath": "d:/VinAI/Lab/Day11_2A202601285_DaoQuocDai/.venv/Scripts/python.exe",
+  "python.pythonPath": "d:/VinAI/Lab/Day11_2A202601285_DaoQuocDai/.venv/Scripts/python.exe",
   "python.analysis.extraPaths": [
-    "${workspaceFolder}/src",
-    "${workspaceFolder}/.venv/Lib/site-packages"
+    "d:/VinAI/Lab/Day11_2A202601285_DaoQuocDai/src",
+    "d:/VinAI/Lab/Day11_2A202601285_DaoQuocDai/.venv/Lib/site-packages"
   ],
   "python.autoComplete.extraPaths": [
-    "${workspaceFolder}/src",
-    "${workspaceFolder}/.venv/Lib/site-packages"
+    "d:/VinAI/Lab/Day11_2A202601285_DaoQuocDai/src",
+    "d:/VinAI/Lab/Day11_2A202601285_DaoQuocDai/.venv/Lib/site-packages"
   ]
 }
