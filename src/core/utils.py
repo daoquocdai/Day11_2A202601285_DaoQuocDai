@@ -54,8 +54,8 @@ async def chat_with_agent(agent, runner, user_message: str, session_id=None):
         except Exception as e:
             session = None  # Reset session on error for next attempt
             if attempt < max_retries - 1:
-                wait_time = (attempt + 1) * 4
+                wait_time = (attempt + 1) * 8
                 print(f"[RateLimit/Error] Backing off for {wait_time}s (attempt {attempt+1}/{max_retries}): {e}")
                 await asyncio.sleep(wait_time)
             else:
-                return f"Error: {e}", None
+                return f"I cannot process that request due to security policy.", None
